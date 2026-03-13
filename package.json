@@ -1,6 +1,6 @@
 {
   "name": "create-node-ts-api",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Production-ready Node.js + TypeScript REST API template with strict layered architecture — for developers who hate copy-pasting boilerplate.",
   "author": "Kalyan Kashaboina <kalyankashaboina07@gmail.com>",
   "license": "MIT",
