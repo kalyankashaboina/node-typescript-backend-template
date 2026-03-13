@@ -1,0 +1,12 @@
+{
+  // Used only for production builds: npm run build
+  // Extends the base config but excludes all test files.
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "dist",
+    "src/**/__tests__/**",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts"
+  ]
+}

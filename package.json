@@ -1,0 +1,44 @@
+{
+  "name": "create-node-ts-api",
+  "version": "0.1.0",
+  "description": "Production-ready Node.js + TypeScript REST API template with strict layered architecture — for developers who hate copy-pasting boilerplate.",
+  "author": "Kalyan Kashaboina <kalyankashaboina07@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kalyankashaboina/node-typescript-backend-template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kalyankashaboina/node-typescript-backend-template/issues"
+  },
+  "homepage": "https://github.com/kalyankashaboina/node-typescript-backend-template#readme",
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "express",
+    "rest-api",
+    "template",
+    "boilerplate",
+    "layered-architecture",
+    "starter",
+    "create",
+    "scaffold"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "bin": {
+    "create-node-ts-api": "./bin/create.js"
+  },
+  "files": [
+    "bin",
+    "template",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "echo \"Tests coming in v0.1.1\" && exit 0"
+  }
+}
