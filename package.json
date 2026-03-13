@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kalyankashaboina/node-typescript-backend-template.git"
+    "url": "git+https://github.com/kalyankashaboina/node-typescript-backend-template.git"
   },
   "bugs": {
     "url": "https://github.com/kalyankashaboina/node-typescript-backend-template/issues"
@@ -29,7 +29,7 @@
     "npm": ">=9.0.0"
   },
   "bin": {
-    "create-node-ts-api": "./bin/create.js"
+    "create-node-ts-api": "bin/create.js"
   },
   "files": [
     "bin",
