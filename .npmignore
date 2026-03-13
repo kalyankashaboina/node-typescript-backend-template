@@ -1,0 +1,21 @@
+# Source (published package ships dist/ only)
+src/
+coverage/
+
+# Config & tooling
+.github/
+.husky/
+.eslintrc.js
+.eslintignore
+.prettierrc
+.prettierignore
+
+# Test
+*.test.ts
+*.spec.ts
+
+# Dev files
+*.log
+.env
+.env.*
+!.env.example
