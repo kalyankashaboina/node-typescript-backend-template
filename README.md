@@ -4,6 +4,7 @@
 > Scaffold a new project in seconds — no config, no boilerplate hunting.
 
 [![npm](https://img.shields.io/npm/v/create-node-ts-api)](https://www.npmjs.com/package/create-node-ts-api)
+[![npm downloads](https://img.shields.io/npm/dm/create-node-ts-api.svg)](https://www.npmjs.com/package/create-node-ts-api)
 [![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
@@ -11,14 +12,24 @@
 ---
 
 ## Usage
-
 ```bash
 npx create-node-ts-api my-api
 cd my-api
 npm run dev
 ```
 
-That's it. Your API is running.
+You will be prompted to choose your features:
+```
+◆  Add Docker?               Y/n
+◆  Add Husky + lint-staged?  y/N
+◆  Add Prettier?             Y/n
+◆  Add GitHub Actions CI/CD? y/N
+◆  Add a testing library?    y/N
+     1  Jest    most popular · ts-jest preset
+     2  Vitest  fast · native ESM
+```
+
+Only what you select gets generated — no dead config files.
 
 | URL | What |
 |---|---|
@@ -34,13 +45,13 @@ A fully working REST API with:
 
 - **Layered architecture** — Routes → Controllers → Services → Repositories. Every file has one job.
 - **TypeScript 5 strict mode** — bugs caught before runtime, path aliases configured
-- **Zod validation** — schema + TypeScript type in one declaration, bad input never reaches business logic
+- **Zod 4 validation** — schema + TypeScript type in one declaration, bad input never reaches business logic
 - **Pino logging** — human-readable in dev, JSON in production
 - **Security out of the box** — Helmet (11 headers), CORS, rate limiting
 - **Swagger UI** — auto-generated from your route comments at `/api-docs`
 - **AppError** — consistent error handling with factory methods (`notFound`, `conflict`, `badRequest`...)
 - **asyncHandler** — no try/catch in controllers, ever
-- **Docker** — multi-stage production build included
+- **Docker** — multi-stage production build included (optional via prompt)
 
 ---
 
@@ -51,17 +62,31 @@ A fully working REST API with:
 | Runtime | Node.js >= 18 |
 | Language | TypeScript 5 (strict) |
 | Framework | Express 5 |
-| Validation | Zod 3 |
+| Validation | Zod 4 |
 | Logging | Pino + pino-http |
 | Security | Helmet + express-rate-limit + CORS |
 | API Docs | swagger-jsdoc + swagger-ui-express |
 | Linting | ESLint + @typescript-eslint |
-| Formatting | Prettier |
+| Formatting | Prettier (optional) |
+| Testing | Jest or Vitest (optional) |
+| CI/CD | GitHub Actions (optional) |
+
+---
+
+## Optional Features (chosen at scaffold time)
+
+| Feature | What it adds |
+|---|---|
+| Docker | `Dockerfile` · `.dockerignore` · `docker-compose.yml` |
+| Husky | `.husky/pre-commit` · `lint-staged` config |
+| Prettier | `.prettierrc` · format scripts |
+| GitHub Actions | `.github/workflows/ci.yml` · type-check → lint → test → build |
+| Jest | `jest.config.js` · `ts-jest` · example test |
+| Vitest | `vitest.config.ts` · coverage · example test |
 
 ---
 
 ## Project Structure
-
 ```
 my-api/
 ├── src/
@@ -102,7 +127,8 @@ my-api/
 ├── .env.example
 ├── tsconfig.json
 ├── tsconfig.build.json
-├── Dockerfile
+├── Dockerfile                  # optional
+├── docker-compose.yml          # optional
 └── package.json
 ```
 
@@ -120,6 +146,8 @@ my-api/
 | `npm run format` | Format with Prettier |
 | `npm run type-check` | TypeScript check, no emit |
 | `npm run clean` | Delete `dist/` |
+| `npm test` | Run test suite (if Jest or Vitest selected) |
+| `npm run test:coverage` | Run tests with coverage report |
 
 ---
 
@@ -137,7 +165,6 @@ my-api/
 ---
 
 ## Architecture
-
 ```
 HTTP Request
      |
@@ -160,7 +187,6 @@ HTTP Response
 ---
 
 ## Adding a New Resource
-
 ```
 1. src/validations/product.validation.ts    <- Zod schemas
 2. src/repositories/product.repository.ts   <- data access only
@@ -176,7 +202,6 @@ HTTP Response
 ## Swapping the Database
 
 Only `src/repositories/` changes. Everything else stays identical.
-
 ```ts
 // Before (in-memory)
 async function findById(id: string): Promise<User | null> {
@@ -192,7 +217,6 @@ async function findById(id: string): Promise<User | null> {
 ---
 
 ## Docker
-
 ```bash
 docker build -t my-api .
 
@@ -207,19 +231,12 @@ docker run -p 5000:5000 \
 
 ## Roadmap
 
-**v0.1.1 — coming soon**
+**v0.3.0 — coming soon**
+- Supertest integration tests
+- GitHub Actions CI pipeline improvements
+- Database adapter examples (Prisma, Mongoose)
 
-```bash
-npx create-node-ts-api my-api
-```
-
-Will ask interactively:
-- Add Docker support?
-- Add Husky git hooks?
-- Add GitHub Actions CI/CD?
-- Add Jest test suite?
-
-Generates only what you choose.
+See [CHANGELOG.md](./CHANGELOG.md) for full version history.
 
 ---
 

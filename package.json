@@ -39,6 +39,6 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "test": "echo \"Tests coming in v0.1.1\" && exit 0"
+    "test": "echo \"Tests coming in v0.3.0\" && exit 0"
   }
 }

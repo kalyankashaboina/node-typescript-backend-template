@@ -395,8 +395,6 @@ async function main() {
   if (hasCmd('git')) {
     try {
       runQ('git init');
-      runQ('git config user.name "kalyankashaboina"');
-      runQ('git config user.email "kalyankashaboina07@gmail.com"');
       runQ('git add .');
       runQ('git commit -m "chore: initial commit"');
       success('Git             initialized · initial commit created');

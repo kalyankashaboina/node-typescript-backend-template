@@ -16,19 +16,28 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 ## [0.2.0] — 2025-03-14
 
 ### Added
-- Interactive setup wizard via `npx create-node-ts-api`
-  - Prompts: Docker, Husky git hooks, GitHub Actions CI/CD, Jest testing
+- Interactive setup wizard via `npx create-node-ts-api my-api`
+  - Prompts: Docker, Husky + lint-staged, Prettier, GitHub Actions CI/CD, Testing
+  - Testing framework choice: Jest (ts-jest) or Vitest
   - Generates only selected config — no unused files
-- Conditional scaffolding based on user prompts
-- Full Windows terminal support
+- Conditional scaffolding — Docker, Husky, Prettier, CI/CD, Jest, Vitest
+- `docker-compose.yml` generated when Docker is selected
+- `.husky/pre-commit` hook + lint-staged config generated when Husky is selected
+- GitHub Actions CI workflow generated when CI/CD is selected — includes test step if testing enabled
+- `jest.config.js` + example test generated when Jest is selected
+- `vitest.config.ts` + example test generated when Vitest is selected
+- Full Windows terminal support — ASCII fallbacks for all symbols
+- Git initialized automatically with initial commit on scaffold
 
 ### Changed
 - Logger updated — human-readable in dev, JSON in prod (Pino)
 - npm package metadata and promoting section cleaned up
+- Prettier is now opt-in via prompt instead of always included
 
 ### Fixed
 - Windows terminal encoding — removed emoji from startup logs
 - Interactive prompt flow stability improvements
+- `.gitignore` rename fix — npm strips dotfiles on publish, renamed back on scaffold
 
 ---
 
